@@ -1,0 +1,37 @@
+Internal Audit Report: APAC Trade Reconciliation System
+Report ID: IA-2025-Q3-042
+Date: October 15, 2025
+Classification: Confidential
+
+Executive Summary:
+The Q3 2025 audit of the APAC trade reconciliation system identified
+three critical findings and five moderate findings. The system processes
+approximately 15,000 trades per day across five offices (Hong Kong,
+Singapore, Tokyo, Sydney, and Mumbai).
+
+Critical Finding 1: Timestamp Synchronization
+The Hong Kong and Singapore offices use different timezone handling
+methods, resulting in a 2.3% mismatch rate in daily reconciliations.
+This affects approximately 345 trades per day. The root cause is a
+legacy timezone library (pytz 2019.3) used by the Singapore system
+while Hong Kong uses the updated version (pytz 2025.1).
+
+Critical Finding 2: Missing Validation Rules
+The automated validation engine lacks 12 of the 47 required HKMA
+validation rules. These rules were updated in the July 2025
+regulatory circular but were not implemented in the system.
+
+Critical Finding 3: Insufficient Access Controls
+Three former employees retained active system access for an average
+of 47 days after their departure date. The maximum observed retention
+was 83 days for a Singapore-based employee who left on July 1, 2025.
+
+Recommendations:
+1. Standardize timezone libraries across all APAC offices by Dec 2025
+2. Implement the 12 missing HKMA validation rules by January 2026
+3. Automate access revocation to trigger within 24 hours of departure
+4. Conduct monthly access review audits
+5. Deploy real-time reconciliation monitoring dashboard
+
+Timeline: All critical findings must be remediated by March 31, 2026
+to meet the HKMA regulatory deadline.
